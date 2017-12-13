@@ -1,1 +1,1 @@
-web: gunicorn contemporary-artist-survey:app
+web: gunicorn main:app
