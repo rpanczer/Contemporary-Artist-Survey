@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Contemporary Artist Vote</title>
+        <!--CSS-->
+        <link rel="stylesheet" href="../static/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+    </head>
+    <body>
+    <div class="Aligner">
+        <div class="Aligner-item Aligner-item-style">
+                <h2>please vote for your favorite contemporary artist.</h2>
+                <br>
+                <form action="{{ url_for('checkCred') }}" method="post">
+                    <div>
+                        <input type="radio" name="artist" value=""> Marcel Eichner<br>
+                        <input type="radio" name="artist" value=""> Jeff Elrod<br>
+                        <input type="radio" name="artist" value=""> Awol Erizku<br>
+                        <input type="radio" name="artist" value=""> Hoosen<br>
+                        <input type="radio" name="artist" value=""> Zak Prekop<br>
+                    </div>
+                    <div>
+                        <input type="radio" name="artist" value=""> Julie Oppermann<br>
+                        <input type="radio" name="artist" value=""> David Ostrowski<br>
+                        <input type="radio" name="artist" value=""> Christian Rosa<br>
+                        <input type="radio" name="artist" value=""> Lucien Smith<br>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                              <input type="radio" aria-label="...">
+                            </span>
+                            <input type="text" class="form-control" aria-label="..." placeholder="If Other, type name here">
+                        </div>
+                    </div>
+                        <button type="submit" value="Submit"  class="btn btn-default">Cast my Vote</button>
+                </form>
+        </div>
+    </div>
+    </body>
+</html>

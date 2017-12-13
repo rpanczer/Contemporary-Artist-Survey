@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>User List - Register</title>
+        <!--CSS-->
+        <link rel="stylesheet" href="../static/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+    </head>
+    <body>
+    <div class="Aligner">
+        <div class="Aligner-item Aligner-item-style">
+            <h1>Create an Account</h1>
+            <br>
+            <form action="{{ url_for('insertUser') }}" method="post">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="firstname_form" id="firstname_form" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lastname_form" id="lastname_form" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                      <label>Username (>5 characters)</label>
+                      <input type="text" class="form-control" name="username_form" id="username_form" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                      <label>Password (>6 characters)</label>
+                      <input type="password" maxlength="20" class="form-control" name="password_form" id="password_form" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label>Please Reenter Password</label>
+                        <input type="password" maxlength="20" class="form-control" name="repassword_form" id="repassword_form" placeholder="Reenter Password">
+                    </div>
+                    <a role="button" class="btn btn-default" href="/">Back to Login</a>
+                    <button disabled id="btnregister" type="submit" value="Submit" class="btn btn-primary pull-right">Register</button>
+            </form>
+            <br>
+            <p id="alert"></p>
+        </div>
+    </div>
+    </body>
+    <!-- Confirm Passwords -->
+    <script>
+    var password = "";
+    var repassword = "";
+    var username = "";
+    var firstname = "";
+    var lastname = "";
+
+    function FieldsCheck(){
+        password = document.getElementById("password_form").value;
+        repassword = document.getElementById("repassword_form").value;
+        username = document.getElementById("username_form").value;
+        firstname = document.getElementById("firstname_form").value;
+        lastname = document.getElementById("lastname_form").value;
+
+        if ((password !== repassword) || (password.length < 7)) {
+            document.getElementById("btnregister").disabled = true;
+        } else if ((username.length < 6) || (firstname.length < 3) || (lastname.length < 3)) {
+            document.getElementById("btnregister").disabled = true;
+        } else {
+            document.getElementById("btnregister").disabled = false;
+        }
+    };
+
+    setInterval(FieldsCheck, 20);
+    </script>
+</html>

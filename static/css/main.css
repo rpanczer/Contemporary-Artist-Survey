@@ -1,0 +1,95 @@
+h1 {
+    text-align: center;
+    color: rgb(0, 140, 255);
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    text-align: center;
+    color: black;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+h4 {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
+}
+
+body {
+    background-color: black;
+    background: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url("../images/art.jpg");
+    background-size: cover;
+}
+
+.Aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+  
+.Aligner-item {
+    max-width: 30%;
+    flex:1;
+}
+
+.Aligner-item-style {
+    background-color: white;
+    opacity: 0.75;
+    padding: 15px;
+    align-self: center;
+}
+
+p {
+    color: white;
+}
+
+/* Users Table */
+
+#users {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#users td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#users tr:nth-child(even) {
+    background-color: #bbbbbb;
+}
+
+#users tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+#users tr:hover {background-color: #d7f5d8;}
+
+#users th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(122, 76, 175);
+    color: white;
+}
+
+/*Buttons*/
+#btn-left {
+    margin-left: 30px;
+}
+
+#btn-right {
+    margin-right: 30px;
+}
+
+#btn-signout {
+    margin-top: 20px;
+}
+
+#btn-deleteuser {
+    margin-top: 20px;
+}
+
