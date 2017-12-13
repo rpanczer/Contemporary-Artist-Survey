@@ -1,5 +1,5 @@
 from flask import *
-import knownartist as ka
+#import knownartist as ka
 app = Flask(__name__)
 
 
