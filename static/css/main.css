@@ -1,19 +1,12 @@
-h1 {
-    text-align: center;
-    color: rgb(0, 140, 255);
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+h2, h4{
+    margin-top: 0px;
+    font-family: 'Merriweather', serif;
 }
 
-h3 {
-    text-align: center;
-    color: black;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-}
-
-h4 {
-    text-align: center;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-
+highlight{
+    padding: 0px;
+    font-size: 1.7em;
+    font-family: 'Tangerine', cursive;
 }
 
 body {
@@ -27,18 +20,28 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    border-radius: 25%;        
 }
   
 .Aligner-item {
     max-width: 30%;
     flex:1;
+    justify-content: center;
 }
 
 .Aligner-item-style {
     background-color: white;
-    opacity: 0.75;
-    padding: 15px;
+    padding: 25px;
     align-self: center;
+}
+
+.Aligner-center {
+  display: flex;
+  justify-content: center;
+}
+
+.radio{
+    padding-left: 70px;
 }
 
 p {
@@ -47,49 +50,87 @@ p {
 
 /* Users Table */
 
-#users {
+#artists {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-#users td {
+#artists td {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#users tr:nth-child(even) {
+#artists tr:nth-child(even) {
     background-color: #bbbbbb;
+    -webkit-transition: background-color 0.5s;
+    -moz-transition:    background-color 0.5s;
+    -ms-transition:     background-color 0.5s;
+    -o-transition:      background-color 0.5s;
+    transition:         background-color 0.5s;
 }
 
-#users tr:nth-child(odd) {
+#artists tr:nth-child(odd) {
     background-color: #f2f2f2;
+    -webkit-transition: background-color 0.5s;
+    -moz-transition:    background-color 0.5s;
+    -ms-transition:     background-color 0.5s;
+    -o-transition:      background-color 0.5s;
+    transition:         background-color 0.5s;
 }
 
-#users tr:hover {background-color: #d7f5d8;}
+#artists tr:hover {
+    background-color: #4768B9;
+}
 
-#users th {
+#artists th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: rgb(122, 76, 175);
+    background-color: black;
     color: white;
 }
 
 /*Buttons*/
-#btn-left {
-    margin-left: 30px;
+.black-btn {
+    background-color: #000000;
+    border: none;
+    color: white;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-transition: background-color 0.5s;
+    -moz-transition:    background-color 0.5s;
+    -ms-transition:     background-color 0.5s;
+    -o-transition:      background-color 0.5s;
+    transition:         background-color 0.5s;
 }
 
-#btn-right {
-    margin-right: 30px;
+.black-btn:hover {
+    background-color: #4768B9;
+    text-decoration: none;
+    color: white;
 }
 
-#btn-signout {
-    margin-top: 20px;
+/*Radio Buttons*/
+input[type=radio]:checked ~ .check {
+  border: 5px solid #0DFF92;
 }
 
-#btn-deleteuser {
-    margin-top: 20px;
+input[type=radio]:checked ~ .check::before{
+  background: #0DFF92;
 }
 
+input[type=radio]:checked ~ label{
+  color: #4768B9;
+}
+
+#other-artist{
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid black;
+}

@@ -4,35 +4,50 @@
         <!--CSS-->
         <link rel="stylesheet" href="../static/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+        <!--Fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Tangerine:700" rel="stylesheet">
     </head>
     <body>
     <div class="Aligner">
         <div class="Aligner-item Aligner-item-style">
-                <h2>please vote for your favorite contemporary artist.</h2>
-                <br>
-                <form action="{{ url_for('checkCred') }}" method="post">
-                    <div>
-                        <input type="radio" name="artist" value=""> Marcel Eichner<br>
-                        <input type="radio" name="artist" value=""> Jeff Elrod<br>
-                        <input type="radio" name="artist" value=""> Awol Erizku<br>
-                        <input type="radio" name="artist" value=""> Hoosen<br>
-                        <input type="radio" name="artist" value=""> Zak Prekop<br>
-                    </div>
-                    <div>
-                        <input type="radio" name="artist" value=""> Julie Oppermann<br>
-                        <input type="radio" name="artist" value=""> David Ostrowski<br>
-                        <input type="radio" name="artist" value=""> Christian Rosa<br>
-                        <input type="radio" name="artist" value=""> Lucien Smith<br>
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                              <input type="radio" aria-label="...">
-                            </span>
-                            <input type="text" class="form-control" aria-label="..." placeholder="If Other, type name here">
+            <h2>Please <highlight>vote</highlight> for your favorite contemporary artist.</h2>
+                <hr style="height:4px;border:none;color:black;background-color:black;">
+                <form name="artistvote" action="{{ url_for('artistCompare') }}" method="post">
+                        <div class="radio">
+                        <input type="radio" name="artist" value="Marcel Eichner"> Marcel Eichner<br>
+                        <input type="radio" name="artist" value="Jeff Elrod"> Jeff Elrod<br>
+                        <input type="radio" name="artist" value="Awol Erizku"> Awol Erizku<br>
+                        <input type="radio" name="artist" value="Hoosen"> Hoosen<br>
+                        <input type="radio" name="artist" value="Zak Prekop"> Zak Prekop<br>
+                        <input type="radio" name="artist" value="Julie Oppermann"> Julie Oppermann<br>
+                        <input type="radio" name="artist" value="David Ostrowski"> David Ostrowski<br>
+                        <input type="radio" name="artist" value="Christian Rosa"> Christian Rosa<br>
+                        <input type="radio" name="artist" value="Lucien Smith"> Lucien Smith<br>
+                        <input type="radio" name="artist" value="Other"><input id="other-artist" type="text" name="other_artist" placeholder="Other Artist"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                        <input type="hidden" id="selected_artist" name="selected_artist" value="">
                         </div>
-                    </div>
-                        <button type="submit" value="Submit"  class="btn btn-default">Cast my Vote</button>
+                        <br>
+                        <div class="Aligner-center">
+                            <button type="submit" value="Submit" class="black-btn">VOTE</button>
+                        </div>
                 </form>
         </div>
     </div>
     </body>
+<script>
+var rad = document.artistvote.artist;
+    var prev = null;
+    for(var i = 0; i < rad.length; i++) {
+        rad[i].onclick = function() {
+            if(this !== prev) {
+                prev = this;
+            }
+        var otherartist = document.getElementById("other_artist").value
+        var selectedartist = (this.value)
+        console.log(selectedartist)
+        document.getElementById("selected_artist").value = selectedartist;
+        };
+    }
+</script>
 </html>

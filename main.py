@@ -1,5 +1,5 @@
 from flask import *
-#import knownartist as ka
+import database as db
 app = Flask(__name__)
 
 
@@ -8,22 +8,16 @@ def main():
     return render_template("index.html")
 
 
-@app.route("/checkCred", methods=["POST"])
-def checkCred():
-    username = request.form['username_form']
-    password = request.form['password_form']
-    if artist == other:
-        pass
-    else:
-        status = ka.checkcreddb(artist)
-    if status == 1:
-        return redirect(url_for("displayHome"))
-    else:
-        return redirect(url_for("main"))
+@app.route("/artistCompare", methods=["POST"])
+def artistCompare():
+    artist = request.form['selected_artist']
+    db.addvote(artist)
+    return redirect(url_for("displayVotes"))
 
-@app.route("/displayRegister")
-def displayRegister():
-    return render_template("register.html")
+@app.route("/displayVotes")
+def displayVotes():
+    artistvotes = db.artistlist()
+    return render_template("voteresults.html", artistvotes=artistvotes)
 
 
 if __name__ == "__main__":

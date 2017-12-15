@@ -1,57 +1,65 @@
 import sqlite3 as sql
+from difflib import SequenceMatcher
 
-def connectdb():
-    conn = sql.connect('users.db')
+def checkartlist(artist):
+    conn = sql.connect('art.db')
     c = conn.cursor()
-    qry = "SELECT firstname, lastname FROM app_users"
-    c.execute(qry)
-    userlist = c.fetchall()
-    return userlist
-
-
-def pushtodb(username, firstname, lastname, password):
-    try:
-       conn = sql.connect('users.db')
-       c = conn.cursor()
-    except Error as e:
-        print(e)
-    userinfo = (username, firstname, lastname)
-    pwinfo = (username, password)
-    c.execute("INSERT INTO app_users VALUES(?,?,?)", userinfo)
-    c.execute("INSERT INTO user_pws VALUES(?, ?)", pwinfo)
-    conn.commit()
-
-
-def checkcreddb(username, password):
-    try:
-       conn = sql.connect('users.db')
-       c = conn.cursor()
-    except Error as e:
-        print(e)
-    c.execute("SELECT password FROM user_pws WHERE username = (?)", (username,))
-    passworddb = c.fetchone()
-    if passworddb is not None:
-        passworddb = passworddb[0]
-        if password == passworddb:
-            return 1
+    qry = "SELECT DISTINCT artistname FROM votes WHERE isDeleted <> 1"
+    artistlist = c.execute(qry)
+    compare = []
+    w1 = artist
+    for name in artistlist:
+        w2 = name
+        ratio = SequenceMatcher(None, w1, w2).ratio()
+        compare.append(ratio)
+    if max(compare) > 0.9:
+        artist = artistlist[max(compare).index()]
+        addvote(artist)
     else:
-        return 0
+        addartist(artist)
 
 
-def deletefromdb(username):
-    try:
-       conn = sql.connect('users.db')
-       c = conn.cursor()
-    except Error as e:
-        print(e)
-    c.execute("DELETE * FROM app_users WHERE username = (?)", (username,))
-    c.execute("DELETE * FROM user_pws WHERE username = (?)", (username,))
+
+def addartist(artist):
+    conn = sql.connect('art.db')
+    c = conn.cursor()
+    newartist = (artist, 1, 0)
+    c.execute("INSERT INTO votes (artistname, votecount, isdeleted)VALUES(?, ?, ?)", newartist)
     conn.commit()
 
-def checkartist(artist):
+
+
+def addvote(artist):
     try:
-       conn = sql.connect('contemporaryartists.db')
+       conn = sql.connect('art.db')
        c = conn.cursor()
     except Error as e:
         print(e)
+    print(artist)
+    given_artists = ['Marcel Eichner', 'Jeff Elrod', 'Awol Erizku', 'Hoosen', 'Zak Prekop', 'Julie Oppermann',
+                     'David Ostrowski', 'Christian Rosa', 'Lucien Smith']
+    if artist in given_artists:
+        c.execute("SELECT votecount FROM votes WHERE artistname = (?) AND isDeleted <> 1", (artist,))
+        votecount = c.fetchone()
+        votecount = votecount[0] + 1
+        addvote = (votecount, artist)
+        c.execute("UPDATE votes SET votecount = (?) WHERE artistname = (?)", addvote)
+        conn.commit()
+    else:
+        checkartlist(artist)
+
+def artistlist():
+    try:
+        conn = sql.connect('art.db')
+        c = conn.cursor()
+    except Error as e:
+        print(e)
+    c.execute("SELECT artistname, votecount FROM votes WHERE isdeleted <> 1")
+    artistvotes = c.fetchall()
+    return artistvotes
+
+
+
+
+
 

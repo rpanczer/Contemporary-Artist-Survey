@@ -1,0 +1,36 @@
+<html>
+        <head>
+            <title>Thanks for Voting!</title>
+            <!--CSS-->
+            <link rel="stylesheet" href="../static/css/bootstrap.css">
+            <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+            <!--Fonts-->
+            <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Tangerine:700" rel="stylesheet">
+        </head>
+        <body>
+        <div class="Aligner">
+            <div class="Aligner-item Aligner-item-style">
+                    <h2 style="text-align:center;">{% block artist %}{% endblock %}, nice choice!</h2>
+                    <h4 style="text-align:center;"><highlight>Curious</highlight> which artist others chose?</h4>
+                <hr style="height:4px;border:none;color:black;background-color:black;">
+                <table id="artists">
+                    <tr>
+                        <th>ARTIST</th>
+                        <th>VOTES</th>
+                    </tr>
+                    {% for row in artistvotes %}
+                    <tr>
+                          <td>{{ row[0] }}</td>
+                          <td style="text-align:center;">{{ row[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <br>
+                <div class="Aligner-center">
+                    <a id="home-btn" role="button" class="black-btn" href="/">HOME</a>
+                </div>
+            </div>
+        </div>
+        </body>
+</html>
