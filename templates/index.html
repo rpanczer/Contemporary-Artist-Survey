@@ -27,12 +27,12 @@
                         <input id="artist7" type="radio" name="artist" value="David Ostrowski"><label for="artist7">David Ostrowski</label><br>
                         <input id="artist8" type="radio" name="artist" value="Christian Rosa"><label for="artist8">Christian Rosa</label><br>
                         <input id="artist9" type="radio" name="artist" value="Lucien Smith"><label for="artist9">Lucien Smith</label><br>
-                        <input id="artist" type="radio" name="artist" value="Other">
-                        <input id="other-artist" type="text" name="other_artist" placeholder="Other Artist" onClick="selectRadio()"/>
+                        <input id="artist10" type="radio" name="artist" value="Other">
+                        <input id="other-artist" type="text" name="artist_other" placeholder="Other Artist" onClick="selectRadio()"/>
                         </div>
                         <br>
                         <div class="Aligner-center">
-                            <button type="submit" value="Submit" class="black-btn">VOTE</button>
+                            <button id="btn-vote" type="submit" value="Submit" class="black-btn">VOTE</button>
                         </div>
                 </form>
         </div>
@@ -40,8 +40,16 @@
     </body>
 <script>
 selectRadio = () => {
-     var radio = document.getElementById("artist");
+     var radio = document.getElementById("artist10");
      radio.checked = true;
 }
+
+/*disableVote = () => {
+    var radio = document.getElementById("artist10");
+    var textvalue = document.getElementById("other-artist");
+    var votebutton = document.getElementById("btn-vote");
+    if radio.checked = true and len(textvalue.value) <1:
+        votebutton.disabled = true;
+}*/
 </script>
 </html>
