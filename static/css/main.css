@@ -9,6 +9,35 @@ highlight{
     font-family: 'Tangerine', cursive;
 }
 
+label {
+    font-family: 'Anonymous Pro', monospace;
+}
+
+input {
+  font-family: 'Anonymous Pro', monospace;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  outline: none;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+
+input:checked {
+  border: 3px solid black;
+}
+.error {
+    color: red;
+}
 body {
     background-color: black;
     background: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url("../images/art.jpg");
@@ -57,21 +86,14 @@ p {
 }
 
 #artists td {
-    border: 1px solid #ddd;
     padding: 8px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
 }
 
-#artists tr:nth-child(even) {
-    background-color: #bbbbbb;
-    -webkit-transition: background-color 0.5s;
-    -moz-transition:    background-color 0.5s;
-    -ms-transition:     background-color 0.5s;
-    -o-transition:      background-color 0.5s;
-    transition:         background-color 0.5s;
-}
-
-#artists tr:nth-child(odd) {
-    background-color: #f2f2f2;
+#artists tr {
+    background-color: #ffffff;
+    border-bottom: 1px solid black !important;
     -webkit-transition: background-color 0.5s;
     -moz-transition:    background-color 0.5s;
     -ms-transition:     background-color 0.5s;
@@ -80,20 +102,24 @@ p {
 }
 
 #artists tr:hover {
-    background-color: #4768B9;
+    color: #4768B9;
 }
 
 #artists th {
+    border-bottom: 2px solid black !important;
     padding-top: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 3px;
     text-align: center;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
+    font-family: Arial;
+
 }
 
 /*Buttons*/
 .black-btn {
     background-color: #000000;
+    font-family: Arial;
     border: none;
     color: white;
     padding: 12px 28px;
@@ -120,17 +146,14 @@ input[type=radio]:checked ~ .check {
   border: 5px solid #0DFF92;
 }
 
-input[type=radio]:checked ~ .check::before{
-  background: #0DFF92;
-}
-
-input[type=radio]:checked ~ label{
-  color: #4768B9;
-}
-
 #other-artist{
+  width: 150px;
+  height: 25px;
+  font-size: 16px;
+  margin: 0;
   border: 0;
   outline: 0;
   background: transparent;
+  border-radius: 0%;
   border-bottom: 2px solid black;
 }

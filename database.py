@@ -1,7 +1,8 @@
 import sqlite3 as sql
 from difflib import SequenceMatcher
 
-def checkartlist(artist):
+
+def checkartistlist(artist):
     conn = sql.connect('art.db')
     c = conn.cursor()
     qry = "SELECT DISTINCT artistname FROM votes WHERE isDeleted <> 1"
@@ -31,8 +32,8 @@ def addartist(artist):
 
 def addvote(artist):
     try:
-       conn = sql.connect('art.db')
-       c = conn.cursor()
+        conn = sql.connect('art.db')
+        c = conn.cursor()
     except Error as e:
         print(e)
     print(artist)
@@ -46,7 +47,7 @@ def addvote(artist):
         c.execute("UPDATE votes SET votecount = (?) WHERE artistname = (?)", addvote)
         conn.commit()
     else:
-        checkartlist(artist)
+        checkartistlist(artist)
 
 def artistlist():
     try:
