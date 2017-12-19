@@ -1,13 +1,11 @@
-from main import db
-
-class createDatabase(db.Model):
+class createDatabase(postgres.Model):
 
     _tablename__ = "votes"
 
-    id = db.Column(db.Integer, primary_key=True)
-    artistname = db.Column(db.String, nullable=False)
-    votecount = db.Column(db.Integer, nullable=False)
-    isdeleted = db.Column(db.Boolean, nullable=False)
+    id = postgres.Column(postgres.Integer, primary_key=True)
+    artistname = postgres.Column(postgres.String, nullable=False)
+    votecount = postgres.Column(postgres.Integer, nullable=False)
+    isdeleted = postgres.Column(postgres.Boolean, nullable=False)
 
     def __init__(self, artistname, votecount, isdeleted):
         self.artistname = artistname

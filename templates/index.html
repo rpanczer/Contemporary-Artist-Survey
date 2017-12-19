@@ -3,7 +3,7 @@
         <title>Contemporary Artist Vote</title>
         <!--CSS-->
         <link rel="stylesheet" type="text/css" href="../static/css/main.css">
-        <script src="bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
+        <script src="https://unpkg.com/sweetalert2@7.1.1/dist/sweetalert2.all.js"></script>
         <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
         <!--Fonts-->
@@ -20,7 +20,7 @@
             {% endif %}
             <p id="submit-error" class="error"></p>
                 <hr style="height:4px;border:none;color:black;background-color:black;">
-                <form name="artistvote" action="{{ url_for('compareArtists') }}" method="post">
+                <form name="artistvote" onsubmit="isvalid()" action="{{ url_for('compareArtists') }}" method="post">
                         <div class="radio">
                         <input id="artist1" type="radio" name="artist" value="Marcel Eichner"><label for="artist1">Marcel Eichner</label><br>
                         <input id="artist2" type="radio" name="artist" value="Jeff Elrod"><label for="artist2">Jeff Elrod</label><br>
@@ -36,7 +36,7 @@
                         </div>
                         <br>
                         <div class="Aligner-center">
-                            <button id="btn-vote" type="submit" value="Submit" class="black-btn" onsubmit="isvalid()">VOTE</button>
+                            <button id="btn-vote" type="submit" value="Submit" class="black-btn">VOTE</button>
                         </div>
                 </form>
         </div>

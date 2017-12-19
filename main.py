@@ -1,16 +1,14 @@
 from flask import *
-import database as db
-import sqlalchemy
+from flask_sqlalchemy import *
 import re
 
 
 # Create the app object
 app = Flask(__name__)
-app.config['DATABASE_URL'] = 'postgres://ydjxpextmymfpr:2bfcf54577559dad34468623d82ca24c8e6da5d4ef5e5e887d79273' \
-                             'eb7500f13@ec2-54-163-233-103.compute-1.amazonaws.com:5432/d7okp7kjfvra58'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ydjxpextmymfpr:2bfcf54577559dad34468623d82ca24c8e6da5d4ef5e5e887d' \
+                                        '79273eb7500f13@ec2-54-163-233-103.compute-1.amazonaws.com:5432/d7okp7kjfvra58'
 
-# Creates db object
-#db = SQLAlechmy(app)
+import database as db
 
 
 # Route allows a user to vote for an artist
