@@ -6,3 +6,4 @@ Jinja2==2.10
 MarkupSafe==1.0
 SQLAlchemy==1.1.15
 Werkzeug==0.13
+Flask-SQLAlchemy==2.3.1
