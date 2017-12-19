@@ -34,7 +34,7 @@ def checkartistlist(artist):
     c.execute("SELECT DISTINCT artistname FROM votes WHERE isDeleted <> 1")
     uniqartistlist = c.fetchall()
     """
-    uniqartistlist = Votes.query.filter_by(isdeleted=0).distinct()
+    uniqartistlist = Votes.query.filter_by(isdeleted=False).distinct()
     uniqartistlist = uniqartistlist.artistname
     compare = []
     w1 = artist
@@ -57,7 +57,7 @@ def addartist(artist):
     # c = conn.cursor()
     # newartist = (artist, 1, 0)
     # c.execute("INSERT INTO votes (artistname, votecount, isdeleted)VALUES(?, ?, ?)", newartist)
-    postgres.session.add(Votes(artist, 1, 0))
+    postgres.session.add(Votes(artist, 1, False))
     postgres.session.commit()
     print("Added {}".format(artist))
     # conn.commit()
@@ -105,5 +105,5 @@ def artistlist():
     c.execute("SELECT artistname, votecount FROM votes WHERE isdeleted <> 1")
     artistvotes = c.fetchall()
     """
-    artistvotes = Votes.query.filter_by(isdeleted=0)
+    artistvotes = Votes.query.filter_by(isdeleted=False)
     return artistvotes
