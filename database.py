@@ -36,7 +36,7 @@ def checkartistlist(artist):
         ratio = SequenceMatcher(None, w1, w2).ratio()
         compare.append(ratio)
     if max(compare) > 0.9:
-        artist = uniqueartistlist[compare.index(max(compare))][0]
+        artist = uniqueartistlist[compare.index(max(compare))]
         compare = True
         addvote(artist, compare)
     else:
