@@ -9,6 +9,7 @@ app = Flask(__name__)
 # If this db would be used for production I'd consider these credentials compromised & create new cred. in a secure loc
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ydjxpextmymfpr:2bfcf54577559dad34468623d82ca24c8e6da5d4ef5e5e887d' \
                                         '79273eb7500f13@ec2-54-163-233-103.compute-1.amazonaws.com:5432/d7okp7kjfvra58'
+app.secret_key = 'not_a_secret'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 import database as db
@@ -32,8 +33,9 @@ def compareArtists():
             db.addvote(artist, compare)
             return redirect(url_for("displayVotes"))
         else:
-            e = 'Sorry, an artist\'s name cannot contain special characters or numbers. Please try voting again.'
-            return redirect(url_for("/", e=e))
+            flash('Sorry, an artist\'s name cannot contain special characters or numbers. Please try voting again.')
+            return redirect(url_for("main"))
+
     else:
         compare = False
         db.addvote(artist, compare)
@@ -48,4 +50,4 @@ def displayVotes():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)

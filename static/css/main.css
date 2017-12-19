@@ -37,6 +37,8 @@ input:checked {
 }
 .error {
     color: red;
+    align-items: center;
+    justify-content: center;
 }
 body {
     background-color: black;

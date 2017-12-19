@@ -12,10 +12,13 @@
     <div class="Aligner">
         <div class="Aligner-item Aligner-item-style">
             <h2>Please <highlight>vote</highlight> for your favorite contemporary artist.</h2>
-            {% if e %}
-            <p class="error"><strong>Error: </strong>{{ e }}</p>
-            {% endif %}
-            <p id="submit-error" class="error"></p>
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    {% for message in messages %}
+                      <p class="error">{{ message }}</p>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
                 <hr style="height:4px;border:none;color:black;background-color:black;">
                 <form id= "artistvoteform" name="artistvote" action="{{ url_for('compareArtists') }}" method="post">
                         <div class="radio">
@@ -33,56 +36,14 @@
                         </div>
                         <br>
                         <div class="Aligner-center">
-                            <button id="btn-vote" type="submit" value="Submit" class="black-btn" disabled>VOTE</button>
+                            <button id="btn-vote" type="submit" value="Submit" class="black-btn">VOTE</button>
                         </div>
                 </form>
         </div>
     </div>
     </body>
 <script>
-var form = document.getElementById("artistvoteform");
-var submitbtn = document.getElementById("btn-vote");
 
-var artist1 = document.getElementById("artist1");
-var artist2 = document.getElementById("artist2");
-var artist3 = document.getElementById("artist3");
-var artist4 = document.getElementById("artist4");
-var artist5 = document.getElementById("artist5");
-var artist6 = document.getElementById("artist6");
-var artist7 = document.getElementById("artist7");
-var artist8 = document.getElementById("artist8");
-var artist9 = document.getElementById("artist9");
-var artist10 = document.getElementById("artist10");
-
-var other = document.getElementById("other-artist");
-
-form.addEventListener('change', function(e) {
-    if(artist1.checked){
-         submitbtn.disabled = false;
-    }else if(artist2.checked){
-         submitbtn.disabled = false;
-    }else if(artist3.checked){
-         submitbtn.disabled = false;
-    }else if(artist4.checked){
-         submitbtn.disabled = false;
-    }else if(artist5.checked){
-         submitbtn.disabled = false;
-    }else if(artist6.checked){
-         submitbtn.disabled = false;
-    }else if(artist7.checked){
-         submitbtn.disabled = false;
-    }else if(artist8.checked){
-         submitbtn.disabled = false;
-    }else if(artist9.checked){
-         submitbtn.disabled = false;
-    }else if(artist10.checked){
-         if(other.length > 1 && other.length < 51){
-             submitbtn.disabled = false;
-         } else {
-             submitbtn.disabled = true;
-         }
-    }
-}
 
 selectRadio = () => {
      var radio = document.getElementById("artist10");
