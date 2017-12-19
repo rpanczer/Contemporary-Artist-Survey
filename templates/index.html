@@ -3,9 +3,6 @@
         <title>Contemporary Artist Vote</title>
         <!--CSS-->
         <link rel="stylesheet" type="text/css" href="../static/css/main.css">
-        <script src="https://unpkg.com/sweetalert2@7.1.1/dist/sweetalert2.all.js"></script>
-        <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
         <!--Fonts-->
         <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Tangerine:700" rel="stylesheet">
@@ -49,43 +46,25 @@ function isvalid(){
     if (artist === 'Other') {
         var artist = document.forms["artistvote"]["artist_other"].value
         if (artist.length < 2) {
-            swal(
-              'Oops...',
-              'Your artist name is too short.',
-              'error'
-            )
+            alert("Your artist name is too short.");
             return false;
         }
         else if (artist.length > 50) {
-            swal(
-              'Oops...',
-              'Your artist name is too long.',
-              'error'
-            )
+            alert("Your artist name is too long.");
+            return false;
         }
         else if ((/^[a-zA-Z]+$/).test(artist)) {
-            swal(
-                  'Thanks for voting!',
-                  'Lets see the results thus far',
-                  'success'
-                )
+            alert("Thanks for voting!");
             return true;
         }
         else {
-            swal(
-              'Oops...',
-              'Your artist name contains numbers or special characters!',
-              'error'
+            alert("Thanks for voting!");
             )
-            return false;
+            return true;
         }
     }
     else {
-        swal(
-              'Thanks for voting!',
-              'Lets see the results thus far',
-              'success'
-            )
+            alert("Thanks for voting!");
         return true;
     }
 }
