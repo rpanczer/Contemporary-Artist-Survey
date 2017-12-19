@@ -44,7 +44,7 @@ def compareArtists():
 @app.route("/displayVotes")
 def displayVotes():
     artistvotes = db.artistlist()
-    return render_template("voteresults.html", artistvotes=artistvotes, artist=g.artist)
+    return render_template("voteresults.html", artistvotes=artistvotes, artistname=g.artist)
 
 
 if __name__ == "__main__":
