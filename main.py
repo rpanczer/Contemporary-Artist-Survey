@@ -26,7 +26,9 @@ def compareArtists():
         artist_other = request.form['artist_other']
         artist = artist_other
         if re.fullmatch('[A-Za-z]{2,25}( [A-Za-z]{2,25})?', artist):
-            pass
+            compare = False
+            db.addvote(artist, compare)
+            return redirect(url_for("displayVotes"))
         else:
             e = 'Sorry, an artist\'s name cannot contain special characters or numbers. Please try voting again.'
             return redirect(url_for("/", e=e))
