@@ -28,21 +28,21 @@ def compareArtists():
         if re.fullmatch('[A-Za-z]{2,25}( [A-Za-z]{2,25})?', artist):
             compare = False
             db.addvote(artist, compare)
-            return redirect(url_for("displayVotes", artist=artist))
+            return redirect(url_for("displayVotes"))
         else:
             e = 'Sorry, an artist\'s name cannot contain special characters or numbers. Please try voting again.'
             return redirect(url_for("/", e=e))
     else:
         compare = False
         db.addvote(artist, compare)
-        return redirect(url_for("displayVotes", artist=artist))
+        return redirect(url_for("displayVotes"))
 
 
 # Route displays the votes system-wide in a table for the user to view
 @app.route("/displayVotes")
-def displayVotes(artist):
+def displayVotes():
     artistvotes = db.artistlist()
-    return render_template("voteresults.html", artistvotes=artistvotes, artistname=artist)
+    return render_template("voteresults.html", artistvotes=artistvotes)
 
 
 if __name__ == "__main__":
