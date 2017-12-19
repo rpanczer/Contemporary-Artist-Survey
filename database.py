@@ -27,17 +27,16 @@ class Votes(postgres.Model):
 # if match, add a vote to that artist
 # if not, add that artist to the db
 def checkartistlist(artist):
-    uniqartistlist = Votes.query.filter_by(isdeleted=False).distinct()
-    uniqartistlist = uniqartistlist.artistname
+    uniqueartistobj = Votes.query.filter_by(isdeleted=False).distinct()
+    uniqueartistlist = [artist.artistname for artist in uniqueartistobj]
     compare = []
     w1 = artist
-    for name in uniqartistlist:
-        w2 = name[0]
+    for name in uniqueartistlist:
+        w2 = name
         ratio = SequenceMatcher(None, w1, w2).ratio()
         compare.append(ratio)
     if max(compare) > 0.9:
-        artist = uniqartistlist[compare.index(max(compare))][0]
-        print("found a match, {}!".format(artist))
+        artist = uniqueartistlist[compare.index(max(compare))][0]
         compare = True
         addvote(artist, compare)
     else:
