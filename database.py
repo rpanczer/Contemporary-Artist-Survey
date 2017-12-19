@@ -27,8 +27,10 @@ class Votes(postgres.Model):
 # if match, add a vote to that artist
 # if not, add that artist to the db
 def checkartistlist(artist):
-    uniqueartistobj = Votes.query.filter_by(isdeleted=False).distinct()
-    uniqueartistlist = [artist.artistname for artist in uniqueartistobj]
+    # uniqueartistobj = Votes.query.filter_by(isdeleted=False).distinct()
+    # uniqueartistlist = [artist.artistname for artist in uniqueartistobj]
+    uniqueartistobj = Votes.query.filter_by(isdeleted=False).first()
+    uniqueartistlist = list(uniqueartistobj.artistname)
     compare = []
     w1 = artist
     for name in uniqueartistlist:
