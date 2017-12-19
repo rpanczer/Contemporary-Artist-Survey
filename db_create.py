@@ -1,6 +1,7 @@
 from database import *
 
 # Create the database and the db tables
+postgres.drop_all()
 postgres.create_all()
 
 # insert default data
