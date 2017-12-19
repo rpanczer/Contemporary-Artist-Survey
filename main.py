@@ -22,9 +22,11 @@ def main():
 @app.route("/compareArtists", methods=["POST"])
 def compareArtists():
     artist = request.form['artist']
+    g.artist = artist
     if artist == 'Other':
         artist_other = request.form['artist_other']
         artist = artist_other
+        g.artist = artist
         if re.fullmatch('[A-Za-z]{2,25}( [A-Za-z]{2,25})?', artist):
             compare = False
             db.addvote(artist, compare)
@@ -42,7 +44,7 @@ def compareArtists():
 @app.route("/displayVotes")
 def displayVotes():
     artistvotes = db.artistlist()
-    return render_template("voteresults.html", artistvotes=artistvotes)
+    return render_template("voteresults.html", artistvotes=artistvotes, artist=g.artist)
 
 
 if __name__ == "__main__":
