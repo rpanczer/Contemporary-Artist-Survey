@@ -22,7 +22,6 @@ def main():
 @app.route("/compareArtists", methods=["POST"])
 def compareArtists():
     artist = request.form['artist']
-    """
     if artist == 'Other':
         artist_other = request.form['artist_other']
         artist = artist_other
@@ -31,10 +30,10 @@ def compareArtists():
         else:
             e = 'Sorry, an artist\'s name cannot contain special characters or numbers. Please try voting again.'
             return redirect(url_for("/", e=e))
-    else:"""
-    compare = False
-    db.addvote(artist, compare)
-    return redirect(url_for("displayVotes"))
+    else:
+        compare = False
+        db.addvote(artist, compare)
+        return redirect(url_for("displayVotes"))
 
 
 # Route displays the votes system-wide in a table for the user to view
