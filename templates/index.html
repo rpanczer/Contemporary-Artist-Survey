@@ -17,7 +17,7 @@
             {% endif %}
             <p id="submit-error" class="error"></p>
                 <hr style="height:4px;border:none;color:black;background-color:black;">
-                <form name="artistvote" action="{{ url_for('compareArtists') }}" method="post">
+                <form id= "artistvoteform" name="artistvote" action="{{ url_for('compareArtists') }}" method="post">
                         <div class="radio">
                         <input id="artist1" type="radio" name="artist" value="Marcel Eichner"><label for="artist1">Marcel Eichner</label><br>
                         <input id="artist2" type="radio" name="artist" value="Jeff Elrod"><label for="artist2">Jeff Elrod</label><br>
@@ -33,40 +33,57 @@
                         </div>
                         <br>
                         <div class="Aligner-center">
-                            <button id="btn-vote" type="submit" value="Submit" class="black-btn">VOTE</button>
+                            <button id="btn-vote" type="submit" value="Submit" class="black-btn" disabled>VOTE</button>
                         </div>
                 </form>
         </div>
     </div>
     </body>
 <script>
-function isvalid(){
-    console.log("valid check");
-    var artist = document.forms["artistvote"]["artist"].value;
-    if (artist === 'Other') {
-        var artist = document.forms["artistvote"]["artist_other"].value
-        if (artist.length < 2) {
-            alert("Your artist name is too short.");
-            return false;
-        }
-        else if (artist.length > 50) {
-            alert("Your artist name is too long.");
-            return false;
-        }
-        else if ((/^[a-zA-Z]+$/).test(artist)) {
-            alert("Thanks for voting!");
-            return true;
-        }
-        else {
-            alert("Thanks for voting!");
-            return true;
-        }
-    }
-    else {
-            alert("Thanks for voting!");
-        return true;
+var form = document.getElementById("artistvoteform");
+var submitbtn = document.getElementById("btn-vote");
+
+var artist1 = document.getElementById("artist1");
+var artist2 = document.getElementById("artist2");
+var artist3 = document.getElementById("artist3");
+var artist4 = document.getElementById("artist4");
+var artist5 = document.getElementById("artist5");
+var artist6 = document.getElementById("artist6");
+var artist7 = document.getElementById("artist7");
+var artist8 = document.getElementById("artist8");
+var artist9 = document.getElementById("artist9");
+var artist10 = document.getElementById("artist10");
+
+var other = document.getElementById("other-artist");
+
+form.addEventListener('change', function(e) {
+    if(artist1.checked){
+         submitbtn.disabled = false;
+    }else if(artist2.checked){
+         submitbtn.disabled = false;
+    }else if(artist3.checked){
+         submitbtn.disabled = false;
+    }else if(artist4.checked){
+         submitbtn.disabled = false;
+    }else if(artist5.checked){
+         submitbtn.disabled = false;
+    }else if(artist6.checked){
+         submitbtn.disabled = false;
+    }else if(artist7.checked){
+         submitbtn.disabled = false;
+    }else if(artist8.checked){
+         submitbtn.disabled = false;
+    }else if(artist9.checked){
+         submitbtn.disabled = false;
+    }else if(artist10.checked){
+         if(other.length > 1 && other.length < 51){
+             submitbtn.disabled = false;
+         } else {
+             submitbtn.disabled = true;
+         }
     }
 }
+
 selectRadio = () => {
      var radio = document.getElementById("artist10");
      radio.checked = true;
