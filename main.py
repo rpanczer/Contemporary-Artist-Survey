@@ -5,6 +5,8 @@ import re
 
 # Create the app object
 app = Flask(__name__)
+# I left this config here (and now in a public github repo) since this is a test project
+# If this db would be used for production I'd consider these credentials compromised & create new cred. in a secure loc
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ydjxpextmymfpr:2bfcf54577559dad34468623d82ca24c8e6da5d4ef5e5e887d' \
                                         '79273eb7500f13@ec2-54-163-233-103.compute-1.amazonaws.com:5432/d7okp7kjfvra58'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
