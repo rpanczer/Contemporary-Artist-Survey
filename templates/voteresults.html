@@ -17,10 +17,10 @@
                         <th>ARTIST</th>
                         <th>VOTES</th>
                     </tr>
-                    {% for row in artistvotes %}
+                    {% for artist in artistvotes %}
                     <tr>
-                          <td>{{ row[0] }}</td>
-                          <td style="text-align:center;">{{ row[1] }}</td>
+                          <td>{{ artist.artistname }}</td>
+                          <td style="text-align:center;">{{ artist.votecount }}</td>
                     </tr>
                     {% endfor %}
                 </table>
