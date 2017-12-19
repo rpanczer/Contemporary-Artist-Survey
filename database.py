@@ -2,6 +2,9 @@ import sqlite3 as sql
 from difflib import SequenceMatcher
 
 
+# check to see if an artist like the artist submitted by a user matches an artist already in the list.
+# if match, add a vote to that artist
+# if not, add that artist to the db
 def checkartistlist(artist):
     conn = sql.connect('art.db')
     c = conn.cursor()
@@ -19,10 +22,10 @@ def checkartistlist(artist):
         compare = True
         addvote(artist, compare)
     else:
-        print(compare)
         addartist(artist)
 
 
+# Adds a new artist to the list of artists
 def addartist(artist):
     conn = sql.connect('art.db')
     c = conn.cursor()
@@ -32,6 +35,9 @@ def addartist(artist):
     conn.commit()
 
 
+# Checks to see if incoming artist is part of the list of 9 given artists
+# If the artist is in this list, shortcuts and adds vote immediately
+# Else check to see if an artist like this exists
 def addvote(artist, compare):
     try:
         conn = sql.connect('art.db')
@@ -51,6 +57,7 @@ def addvote(artist, compare):
         checkartistlist(artist)
 
 
+# Creates an object that contains all artist names and vote count where the artist has not been deleted
 def artistlist():
     try:
         conn = sql.connect('art.db')
