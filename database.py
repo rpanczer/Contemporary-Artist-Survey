@@ -58,11 +58,10 @@ def addvote(artist, compare):
     given_artists = ('Marcel Eichner', 'Jeff Elrod', 'Awol Erizku', 'Hoosen', 'Zak Prekop', 'Julie Oppermann',
                      'David Ostrowski', 'Christian Rosa', 'Lucien Smith')
     if compare is True or artist in given_artists:
-        votecount = Votes.query.filter_by(artistname=artist)
-        votecount = votecount.votecount
-        votecount = votecount[0] + 1
-        update_data = Votes.query.filter_by(artistname=artist).first()
-        update_data.votecount = votecount
+        artistvotes = Votes.query.filter_by(artistname=artist)
+        votecount = artistvotes.votecount
+        votecount += 1
+        artistvotes.votecount = votecount
 
         postgres.session.commit()
     else:
