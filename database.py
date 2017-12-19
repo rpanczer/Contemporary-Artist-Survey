@@ -59,7 +59,7 @@ def addvote(artist, compare):
                      'David Ostrowski', 'Christian Rosa', 'Lucien Smith')
     if compare is True or artist in given_artists:
         artistvotes = Votes.query.filter_by(artistname=artist).first()
-        artistvotes.votecount = 1
+        artistvotes.votecount += 1
         postgres.session.commit()
         return
     else:
