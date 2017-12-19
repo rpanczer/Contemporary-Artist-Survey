@@ -60,7 +60,7 @@ def addvote(artist, compare):
         artistvotes = Votes.query.filter_by(artistname=artist).first()
         artistvotes.votecount += 1
         postgres.session.commit()
-        return
+        return artist
     else:
         checkartistlist(artist)
 

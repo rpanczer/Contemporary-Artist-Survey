@@ -22,29 +22,27 @@ def main():
 @app.route("/compareArtists", methods=["POST"])
 def compareArtists():
     artist = request.form['artist']
-    g.artist = artist
     if artist == 'Other':
         artist_other = request.form['artist_other']
         artist = artist_other
-        g.artist = artist
         if re.fullmatch('[A-Za-z]{2,25}( [A-Za-z]{2,25})?', artist):
             compare = False
             db.addvote(artist, compare)
-            return redirect(url_for("displayVotes"))
+            return redirect(url_for("displayVotes", artist=artist))
         else:
             e = 'Sorry, an artist\'s name cannot contain special characters or numbers. Please try voting again.'
             return redirect(url_for("/", e=e))
     else:
         compare = False
         db.addvote(artist, compare)
-        return redirect(url_for("displayVotes"))
+        return redirect(url_for("displayVotes", artist=artist))
 
 
 # Route displays the votes system-wide in a table for the user to view
 @app.route("/displayVotes")
-def displayVotes():
+def displayVotes(artist):
     artistvotes = db.artistlist()
-    return render_template("voteresults.html", artistvotes=artistvotes, artistname='Bobby')
+    return render_template("voteresults.html", artistvotes=artistvotes, artistname=artist)
 
 
 if __name__ == "__main__":
