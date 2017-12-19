@@ -17,7 +17,7 @@
             {% endif %}
             <p id="submit-error" class="error"></p>
                 <hr style="height:4px;border:none;color:black;background-color:black;">
-                <form name="artistvote" onsubmit="isvalid()" action="{{ url_for('compareArtists') }}" method="post">
+                <form name="artistvote" action="{{ url_for('compareArtists') }}" method="post">
                         <div class="radio">
                         <input id="artist1" type="radio" name="artist" value="Marcel Eichner"><label for="artist1">Marcel Eichner</label><br>
                         <input id="artist2" type="radio" name="artist" value="Jeff Elrod"><label for="artist2">Jeff Elrod</label><br>
